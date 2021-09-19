@@ -1,0 +1,12 @@
+.add-bg-css {
+    background-color: burlywood;
+    width: 100%;
+    min-height: 100px;
+
+    background: url(../img/apo-02.jpg);
+    background-size: 100% 100%;
+}
+
+img {
+    width: 20%;
+}

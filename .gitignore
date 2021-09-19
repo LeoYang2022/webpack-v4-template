@@ -1,0 +1,5 @@
+# dependencies
+/node_modules
+
+# 打包文件目录
+/dist/
