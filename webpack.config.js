@@ -7,6 +7,7 @@ const path = require("path");
 // 引入 plugin 插件
 const htmlWebpackPlugin = require("html-webpack-plugin");   // 生成 html 文件
 const miniCssExtractPlugin = require("mini-css-extract-plugin");    // 生成 css 文件
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');     // 每次打包时，删除上次打包的残留文件，保证打出的包整洁
 
 module.exports = {
     /** 入口：整个项目必须要指定一个打包的入口文件 */
@@ -90,6 +91,9 @@ module.exports = {
         new miniCssExtractPlugin({
             filename: "css/app.css",    // ★ 多一层目录 css
         }),
+
+        // 清理目录
+        new CleanWebpackPlugin(),
     ],
 
     // 配置 webpack-dev-server 服务代理
