@@ -83,6 +83,19 @@ module.exports = {
                 test: /\.vue$/i,
                 loader: "vue-loader"
             },
+
+            // 处理字体文件
+            {
+                test: /\.(ttf|woff)$/i,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "font/[name].[hash:8].[ext]"
+                        }
+                    }
+                ]
+            },
         ]
     },
 

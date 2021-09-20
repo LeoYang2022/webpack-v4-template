@@ -22,6 +22,7 @@
     },
     "homepage": "https://github.com/LybertProject/webpack-v4-template#readme",
     "dependencies": {
+        "element-ui": "^2.15.6",
         "vue": "^2.6.14"
     },
     "devDependencies": {

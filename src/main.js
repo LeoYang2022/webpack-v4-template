@@ -43,8 +43,14 @@ console.log("热更新测试");
 import Vue from 'vue';
 Vue.config.productionTip = false;
 
+// 引入 UI
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
 // 引入组件
 import App from './App.vue';
+
+Vue.use(ElementUI);
 new Vue({
     el: "#app",     // 挂载元素
     render: function(h){
