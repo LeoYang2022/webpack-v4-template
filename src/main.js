@@ -1,17 +1,17 @@
 // webpack 入口文件，所有需要参与打包的文件，都必须在入口文件引入（文件后缀名一定要写全）
 // import "./js/jquery-1.12.4";
 // import "./js/canvas-script-ES6";
-import "./js/test-b.js";
+import "./assets/js/test-b.js";
 
-import "./css/reset.css";
-import "./css/my.css";
+import "./assets/css/reset.css";
+import "./assets/css/my.css";
 
 // 引入图片资源
-import i1 from "./img/apo-01.jpg";
-import i2 from "./img/apo-02.jpg";
-import i3 from "./img/apo-03.jpg";
-import i4 from "./img/apo-04.jpg";
-import i5 from "./img/apo-05.jpg";
+import i1 from "./assets/img/apo-01.jpg";
+import i2 from "./assets/img/apo-02.jpg";
+import i3 from "./assets/img/apo-03.jpg";
+import i4 from "./assets/img/apo-04.jpg";
+import i5 from "./assets/img/apo-05.jpg";
 
 // 引用图片对象
 let img1 = document.createElement("img");
@@ -35,3 +35,19 @@ app.appendChild(img5);
 
 // // 热更新测试
 console.log("热更新测试");
+
+// 引入 Vue
+// 注意：在工程化的环境中，引入的 vue 是不带处理模板（<template>）功能的，
+// 实际上引入的是 vue.runtime.esm.js ，并不是完整的 vue.js
+// 所以，必须要手动通过调用 render 函数的方式创建虚拟 DOM 并展示到页面上。
+import Vue from 'vue';
+Vue.config.productionTip = false;
+
+// 引入组件
+import App from './App.vue';
+new Vue({
+    el: "#app",     // 挂载元素
+    render: function(h){
+        return h(App)
+    }
+})

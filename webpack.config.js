@@ -8,6 +8,7 @@ const path = require("path");
 const htmlWebpackPlugin = require("html-webpack-plugin");   // 生成 html 文件
 const miniCssExtractPlugin = require("mini-css-extract-plugin");    // 生成 css 文件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');     // 每次打包时，删除上次打包的残留文件，保证打出的包整洁
+const { VueLoaderPlugin } = require("vue-loader");    // 处理 Vue 文件加载
 
 module.exports = {
     /** 入口：整个项目必须要指定一个打包的入口文件 */
@@ -43,7 +44,7 @@ module.exports = {
                         /** 替换了 style-loader */
                         loader: miniCssExtractPlugin.loader,
                         options: {  // 配置
-                            publicPath: "../",   // 获取资源的路径，★ 多了一层目录，往前退一层 ../
+                            publicPath: "../../",   // 获取资源的路径，★ 多了一层目录，往前退一层 ../
                         }
                     }, 
                     "css-loader"
@@ -76,6 +77,12 @@ module.exports = {
                 test: /\.html$/i,
                 use: ["html-loader"]
             },
+
+            // 处理 vue 文件
+            {
+                test: /\.vue$/i,
+                loader: "vue-loader"
+            },
         ]
     },
 
@@ -94,6 +101,8 @@ module.exports = {
 
         // 清理目录
         new CleanWebpackPlugin(),
+
+        new VueLoaderPlugin(),
     ],
 
     // 配置 webpack-dev-server 服务代理
